@@ -1,0 +1,238 @@
+<!-- Begin page -->
+<div id="layout-wrapper">
+  <!-- ========== App Menu ========== -->
+  <app-header></app-header>
+  <!-- Left Sidebar End -->
+  <app-sideBar></app-sideBar>
+  <!-- Vertical Overlay-->
+  <div class="vertical-overlay"></div>
+  
+  <div class="main-content">
+
+    <div class="page-content">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title mb-0">Add, Edit & Remove Cars</h4>
+              </div><!-- end card header -->
+
+              <div class="card-body">
+                <div id="customerList">
+                  <div class="row g-4 mb-3">
+                    <div class="col-sm-auto">
+                      <div>
+                        <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn"
+                          data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Add</button>
+                      </div>
+                    </div>
+                    <div class="col-sm">
+                      <div class="d-flex justify-content-sm-end">
+                        <div class="search-box ms-2">
+                          <input type="text" class="form-control search" placeholder="Search...">
+                          <i class="ri-search-line search-icon"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="table-responsive table-card mt-3 mb-1">
+                    <table class="table align-middle table-nowrap" id="customerTable">
+                      <thead class="table-light">
+                        <tr>
+                          <!-- <th class="sort" data-sort="ID">ID</th> -->
+                          <th class="sort" data-sort="Numero IM">Numero IM</th>
+                          <th class="sort" data-sort="Place">Place</th>
+                          <th class="sort" data-sort="Carburant">Carburant</th>
+                          <th class="sort" data-sort="Marque">Marque</th>
+                          <th class="sort" data-sort="Ocupation">Ocupation</th>
+                          <th class="sort" data-sort="action">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let item of cars" class="list form-check-all">
+                        <tr>
+                          <!-- <td class="customer_name">V{{item.id}}</td> -->
+                          <td class="customer_name">{{item.im}}</td>
+                          <td class="email">{{item.place}}</td>
+                          <td class="phone">{{item.carburant}}</td>
+                          <td class="date">{{item.marque}}</td>
+                          <!-- <td class="status">
+                            <span *ngIf="item.occuped == false" class="badge badge-soft-success text-uppercase">Libre</span>
+                            <span *ngIf="item.occuped == true" class="badge badge-soft-danger text-uppercase">occuped</span>
+                          </td> -->
+                          <td>
+                            <div class="d-flex gap-2">
+                              <div class="remove">
+                                <button class="btn btn-sm btn-warning" data-bs-toggle="modal">Details</button>
+                              </div>
+
+                              <div class="edit">
+                                <button class="btn btn-sm btn-primary edit-item-btn" data-bs-toggle="modal"
+                                  data-bs-target="#showModal">Edit</button>
+                              </div>
+                              <div class="remove">
+                                <a  class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
+                                  data-bs-target="#deleteRecordModal">Remove</a>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="noresult" *ngIf="cars == null">
+                      <div class="text-center">
+
+                        <h5 class="mt-2">Sorry! No Result Found</h5>
+                        <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
+                          orders for you search.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-end">
+                    <div class="pagination-wrap hstack gap-2">
+                      <a class="page-item pagination-prev disabled" href="#">
+                        Previous
+                      </a>
+                      <ul class="pagination listjs-pagination mb-0"></ul>
+                      <a class="page-item pagination-next" href="#">
+                        Next
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- end card -->
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+
+        <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                  id="close-modal"></button>
+              </div>
+              <form #addForm="ngForm" >
+                <div class="modal-body modalbody">
+
+                  <div class="mb-3" id="modal-id" style="display: none;">
+                    <label for="id-field" class="form-label">ID</label>
+                    <input type="text"  id="id-field" class="form-control" placeholder="ID" readonly />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="customername-field" class="form-label" required>im </label>
+                    <input type="text" name="im" [(ngModel)]="carsAdd.im" id="customername-field" class="form-control" placeholder="Ex: 5582fd" required />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email-field" class="form-label">place </label>
+                    <input type="number" name="place" [(ngModel)]="carsAdd.place" id="email-field" class="form-control" placeholder="20" required />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="phone-field" class="form-label">carburant</label>
+                    <input type="text" id="phone-field" class="form-control" name="carburant" [(ngModel)]="carsAdd.carburant" placeholder="Ex: Diezel"  />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="date-field" class="form-label">marque</label>
+                    <input type="text" id="date-field" name="im" [(ngModel)]="carsAdd.marque" class="form-control" placeholder="Ex: bmw"  />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="date-field" class="form-label">bagage</label>
+                    <input type="number" id="date-field" name="badge" [(ngModel)]="carsAdd.bagage" class="form-control" placeholder="5"  />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="date-field" class="form-label">vitesse </label>
+                    <input type="text" id="date-field" name="vitesse" [(ngModel)]="carsAdd.vitesse" class="form-control" placeholder="automatique" required />
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="date-field" class="form-label">Prix</label>
+                    <input type="number" id="date-field"  name="prix" [(ngModel)]="carsAdd.price"class="form-control" placeholder="50 000" required />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="date-field" class="form-label">Image</label>
+                    <input type="file" id="date-field" name="image_url" [(ngModel)]="carsAdd.image_url" class="form-control" placeholder="Votre image" required />
+                  </div>
+
+                  <div>
+                    <label for="status-field" class="form-label">Category Voitures</label>
+                    <select class="form-control" name="category_id" [(ngModel)]="carsAdd.category_id" data-trigger name="status-field" id="status-field">
+                      <option *ngFor="let item of categories" value="{{item.id}}">{{item.type}}</option>
+                    </select>
+                  </div>
+
+                  <!-- <div>
+                    <label for="status-field" class="form-label">Climatiseur</label>
+                    <select class="form-control" name="clim" [(ngModel)]="carsAdd.clim" data-trigger name="status-field" id="status-field">
+                      <option  value="Oui">Oui</option>
+                      <option  value="Non">Non</option>
+                    </select>
+                  </div> -->
+
+                  <!-- <div class="mb-3">
+                    <label for="date-field" class="form-label">Description</label>
+                    <textarea class="form-control" name="description" [(ngModel)]="carsAdd.description" cols="80" rows="1"></textarea>
+                  </div> -->
+
+                </div>
+                
+                <div class="modal-footer">
+                  <div class="hstack gap-2 justify-content-end">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success" id="add-btn" (click)="addCars()">Save</button>
+                    <!-- <button type="button" class="btn btn-success" id="edit-btn">Update</button> -->
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="false">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                  id="btn-close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="mt-2 text-center">
+
+                  <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                    <h4>Are you Sure ?</h4>
+                    <p class="text-muted mx-4 mb-0">Are you Sure You want to Remove this Record ?</p>
+                  </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                  <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn w-sm btn-danger " id="delete-record">Yes, Delete It!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end modal -->
+
+      </div>
+      <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+  </div>
+  <!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
