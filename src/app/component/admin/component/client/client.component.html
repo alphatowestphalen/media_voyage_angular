@@ -46,52 +46,16 @@
                           <th class="sort" data-sort="ID">ID</th>
                           <th class="sort" data-sort="Numero IM">Nom </th>
                           <th class="sort" data-sort="Numero IM">Adresse</th>
-                          <th class="sort" data-sort="Numero IM">Number</th>
+                          <th class="sort" data-sort="Numero IM">Telephone</th>
                           <th class="sort" data-sort="action">Action</th>
                         </tr>
                       </thead>
-                      <tbody class="list form-check-all">
+                      <tbody *ngFor="let item of clientAll " class="list form-check-all">
                         <tr>
-                          <td class="customer_name">CL001</td>
-                          <td class="customer_name">Mary Cousar</td>
-                          <td class="customer_name">Tanambao</td>
-                          <td class="customer_name">034 89 223 20</td>
-                          <td>
-                            <div class="d-flex gap-2">
-                              <div class="edit">
-                                <button class="btn btn-sm btn-primary edit-item-btn" data-bs-toggle="modal"
-                                  data-bs-target="#showModal">Edit</button>
-                              </div>
-                              <div class="remove">
-                                <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                  data-bs-target="#deleteRecordModal">Remove</button>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="customer_name">CL001</td>
-                          <td class="customer_name">Mary Cousar</td>
-                          <td class="customer_name">Tanambao</td>
-                          <td class="customer_name">034 89 223 20</td>
-                          <td>
-                            <div class="d-flex gap-2">
-                              <div class="edit">
-                                <button class="btn btn-sm btn-primary edit-item-btn" data-bs-toggle="modal"
-                                  data-bs-target="#showModal">Edit</button>
-                              </div>
-                              <div class="remove">
-                                <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                  data-bs-target="#deleteRecordModal">Remove</button>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="customer_name">CL001</td>
-                          <td class="customer_name">Mary Cousar</td>
-                          <td class="customer_name">Tanambao</td>
-                          <td class="customer_name">034 89 223 20</td>
+                          <td class="customer_name">C{{item.id}}</td>
+                          <td class="customer_name">{{item.name}}</td>
+                          <td class="customer_name">{{item.adresse}}</td>
+                          <td class="customer_name">{{item.number}}</td>
                           <td>
                             <div class="d-flex gap-2">
                               <div class="edit">
@@ -164,7 +128,7 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="customername-field" class="form-label">Number</label>
+                    <label for="customername-field" class="form-label">Telephone</label>
                     <input type="text" id="customername-field" class="form-control" placeholder="Enter Name" required />
                   </div>
                 </div>

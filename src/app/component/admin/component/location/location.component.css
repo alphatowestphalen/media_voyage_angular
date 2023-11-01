@@ -1,3 +1,11 @@
 button{
     width: 100%;
 }
+.modalbody{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(200px,auto));
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: -12px;
+    gap: 15px;
+}

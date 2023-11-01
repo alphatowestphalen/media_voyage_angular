@@ -415,194 +415,45 @@
                 </div>
 
                 <div class="row mt-4">
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card ribbon-box right overflow-hidden">
-                            <div class="card-body text-center p-4">
-                                <div class="ribbon ribbon-warning ribbon-shape trending-ribbon">
-                                    <i class="ri-flashlight-fill text-white align-bottom"></i>
-                                    <span class="trending-ribbon-text">new</span>
-                                </div>
-                                <img src="assets/images/voiture/superva.png"alt="" height="65" />
-                                <h5 class="mb-1 mt-4">
-                                    <a href="apps-ecommerce-seller-details.html" class="link-primary">Toyota</a>
-                                </h5>
-                                <p class="text-muted mb-4">Véhicule Utilitaire Sport</p>
-                                <div class="row mt-4">
-                                    <div class="col-lg-6 border-end-dashed border-end">
-                                        <h5>30</h5>
-                                        <span class="text-muted">Place</span>
+                        <div *ngFor="let item of carsAll" class="col-xl-4 col-lg-6">
+                            <div class="card ribbon-box right overflow-hidden">
+                                <div class="card-body text-center p-4">
+                                    <!-- <div class="ribbon ribbon-warning ribbon-shape trending-ribbon">
+                                        <i class="ri-flashlight-fill text-white align-bottom"></i>
+                                        <span class="trending-ribbon-text">new</span>
+                                    </div> -->
+                                    <img src="{{url+item.image_url}}"alt="tsy azo" height="65" />
+                                    <h5 class="mb-1 mt-4">
+                                        <a href="apps-ecommerce-seller-details.html" class="link-primary">{{item.marque}}</a>
+                                    </h5>
+                                    <p class="text-muted mb-4">{{item.category.type}}</p>
+                                    <div class="row mt-4">
+                                        <div class="col-lg-6 border-end-dashed border-end">
+                                            <h5>{{item.place}}</h5>
+                                            <span class="text-muted">Place</span>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <h5>Ar {{item.price}}</h5>
+                                            <span class="text-muted">Par Jours</span>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <h5>Ar 50 000</h5>
-                                        <span class="text-muted">Par Jours</span>
+                                    <div class="mt-4">
+                                        <a (click)="ShowDetailsCars(item.id)" class="btn btn-light w-100">View
+                                            Details</a>
                                     </div>
-                                </div>
-                                <div class="mt-4">
-                                    <a (click)="ShowDetailsCars()" class="btn btn-light w-100">View
-                                        Details</a>
-                                </div>
-                                <div class="mt-2">
-                                    <a (click)="ShowChackout()" class="btn btn-success w-100"> <i class="ri-shopping-cart-2-line"></i> Reserved </a>
+                                    <div class="mt-2">
+                                        <a (click)="ShowChackout()" class="btn btn-success w-100"> <i class="ri-shopping-cart-2-line"></i> Reserved </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--end col-->
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card">
-                            <div class="card-body text-center p-4 ">
-                                <img  class="mt-4" src="assets/images/voiture/v1.png" alt="" height="45" />
-                                <h5 class="mb-1 mt-4">
-                                    <a href="apps-ecommerce-seller-details.html" class="link-primary">Ford</a>
-                                </h5>
-                                <p class="text-muted mb-4">Cabriolet </p>
-                                <div class="row mt-4">
-                                    <div class="col-lg-6 border-end-dashed border-end">
-                                        <h5>8</h5>
-                                        <span class="text-muted">Places </span>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <h5>Ar 80 000</h5>
-                                        <span class="text-muted">Par Jours</span>
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <a href="apps-ecommerce-seller-details.html" class="btn btn-light w-100">View
-                                        Details</a>
-                                </div>
-                                <div class="mt-2">
-                                    <a href="apps-ecommerce-seller-details.html" class="btn btn-success w-100">Reserved</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card ribbon-box right overflow-hidden">
-                            <div class="card-body text-center p-4">
-                                <div class="ribbon ribbon-warning ribbon-shape trending-ribbon">
-                                    <i class="ri-flashlight-fill text-white align-bottom"></i>
-                                    <span class="trending-ribbon-text">new</span>
-                                </div>
-                                <img src="assets/images/voiture/Grand-Starex-min-1.jpg"alt="" height="65" />
-                                <h5 class="mb-1 mt-4">
-                                    <a href="apps-ecommerce-seller-details.html" class="link-primary">Toyota</a>
-                                </h5>
-                                <p class="text-muted mb-4">Véhicule Utilitaire Sport</p>
-                                <div class="row mt-4">
-                                    <div class="col-lg-6 border-end-dashed border-end">
-                                        <h5>25</h5>
-                                        <span class="text-muted">Places</span>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <h5>Ar 50 000</h5>
-                                        <span class="text-muted">Par Jours</span>
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <a (click)="ShowDetailsCars()" class="btn btn-light w-100">View
-                                        Details</a>
-                                </div>
-                                <div class="mt-2">
-                                    <a (click)="ShowChackout()" class="btn btn-success w-100"> <i class="ri-shopping-cart-2-line"></i> Reserved </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--end col-->
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card">
-                            <div class="card-body text-center p-4">
-                                <img class="mt-4" src="assets/images/voiture/2place.png" alt="" height="45" />
-                                <h5 class="mb-1 mt-4">
-                                    <a href="apps-ecommerce-seller-details.html" class="link-primary">Nissan</a>
-                                </h5>
-                                <p class="text-muted mb-4">Voiture de Plaisire</p>
-                                <div class="row mt-4">
-                                    <div class="col-lg-6 border-end-dashed border-end">
-                                        <h5>4</h5>
-                                        <span class="text-muted">Place</span>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <h5>Ar 30 000</h5>
-                                        <span class="text-muted">Par Jours</span>
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <a href="apps-ecommerce-seller-details.html" class="btn btn-light w-100">View
-                                        Details</a>
-                                </div>
-                                <div class="mt-2">
-                                    <a href="apps-ecommerce-seller-details.html" class="btn btn-success w-100">Reserved</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card">
-                            <div class="card-body text-center p-4">
-                                <img class="mt-4" src="assets/images/voiture/rang.png" alt="" height="45" />
-                                <h5 class="mb-1 mt-4">
-                                    <a href="apps-ecommerce-seller-details.html" class="link-primary">Range Rover</a>
-                                </h5>
-                                <p class="text-muted mb-4">Break</p>
-                                <div class="row mt-4">
-                                    <div class="col-lg-6 border-end-dashed border-end">
-                                        <h5>4</h5>
-                                        <span class="text-muted">Places</span>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <h5>Ar90,000</h5>
-                                        <span class="text-muted">Par Jours</span>
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <a href="apps-ecommerce-seller-details.html" class="btn btn-light w-100">View
-                                        Details</a>
-                                </div>
-                                <div class="mt-2">
-                                    <a href="apps-ecommerce-seller-details.html" class="btn btn-success w-100">Reserved</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card">
-                            <div class="card-body text-center p-4">
-                                <img class="mt-4" src="assets/images/voiture/vlixe.png" alt="" height="45" />
-                                <h5 class="mb-1 mt-4">
-                                    <a href="apps-ecommerce-seller-details.html" class="link-primary">Volkswagen</a>
-                                </h5>
-                                <p class="text-muted mb-4">Crossover</p>
-                                <div class="row mt-4">
-                                    <div class="col-lg-6 border-end-dashed border-end">
-                                        <h5>4</h5>
-                                        <span class="text-muted">Places</span>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <h5>Ar 70 000</h5>
-                                        <span class="text-muted">Wallet Balance</span>
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <a href="apps-ecommerce-seller-details.html" class="btn btn-light w-100">View
-                                        Details</a>
-                                </div>
-                                <div class="mt-2">
-                                    <a href="apps-ecommerce-seller-details.html" class="btn btn-success w-100">Reserved</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
                 </div>
                 <!--end row-->
 
                 <div class="row g-0 text-center text-sm-start align-items-center mb-3">
                     <div class="col-sm-6">
                         <div>
-                            <p class="mb-sm-0">Showing 1 to 8 of 12 entries</p>
+                            <p class="mb-sm-0">Showing 1 to 8 of {{carsAll.length}} entries</p>
                         </div>
                     </div>
                     <!-- end col -->

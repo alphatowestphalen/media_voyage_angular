@@ -55,8 +55,8 @@
                       <tbody *ngFor="let item of location" class="list form-check-all">
                         <tr>
                           <td class="customer_name">L{{item.id}}</td>
-                          <td class="customer_name">L{{item.date.start}}</td>
-                          <td class="customer_name">L{{item.date.end}}</td>
+                          <td class="customer_name">{{item.date.start}}</td>
+                          <td class="customer_name">{{item.date.end}}</td>
                           <td class="customer_name">{{item.person}}</td>
                           <td class="customer_name">{{item.car.im}}</td>
                           <td class="customer_name">{{item.client.name}}</td>
@@ -113,34 +113,71 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                   id="close-modal"></button>
               </div>
-              <form>
-                <div class="modal-body">
+              <form #addForm="ngForm" >
+                <div class="modal-body modalbody">
 
                   <div class="mb-3" id="modal-id" style="display: none;">
                     <label for="id-field" class="form-label">ID</label>
-                    <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
+                    <input type="text"  id="id-field" class="form-control" placeholder="ID" readonly />
                   </div>
 
                   <div class="mb-3">
-                    <label for="customername-field" class="form-label">Nom</label>
-                    <input type="text" id="customername-field" class="form-control" placeholder="Enter Name" required />
+                    <label for="customername-field" class="form-label" required> Nombre de Personne </label>
+                    <input type="number" min="0" name="person" [(ngModel)]="locationAdd.person" id="customername-field" class="form-control" placeholder="Ex: 5" required />
                   </div>
 
                   <div class="mb-3">
-                    <label for="customername-field" class="form-label">Adresse</label>
-                    <input type="text" id="customername-field" class="form-control" placeholder="Enter Name" required />
+                    <label for="email-field" class="form-label">Date de debut </label>
+                    <input type="date" name="start" [(ngModel)]="locationAdd.start" id="email-field" class="form-control" placeholder="20" required />
                   </div>
 
                   <div class="mb-3">
-                    <label for="customername-field" class="form-label">Number</label>
-                    <input type="text" id="customername-field" class="form-control" placeholder="Enter Name" required />
+                    <label for="phone-field" class="form-label">Date de fin</label>
+                    <input type="date" id="phone-field" class="form-control" name="end" [(ngModel)]="locationAdd.end"  />
                   </div>
+
+                  <div class="mb-3">
+                    <label for="date-field" class="form-label">Nom et Prenom Locateur</label>
+                    <input type="text" id="date-field" name="name" [(ngModel)]="locationAdd.name" class="form-control" placeholder="Ex: Rabe"  />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="date-field" class="form-label">adresse</label>
+                    <input type="text" id="date-field" name="adresse" [(ngModel)]="locationAdd.adresse" class="form-control" placeholder="Tanambao"  />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="date-field" class="form-label">Numero Telephone </label>
+                    <input type="text" id="date-field" name="number" [(ngModel)]="locationAdd.number" class="form-control" placeholder="Ex: 03 86 555 99" required />
+                  </div>
+
+                  <div>
+                    <label for="status-field" class="form-label">Voiture</label>
+                    <select class="form-control" name="car_id" [(ngModel)]="locationAdd.car_id" data-trigger name="status-field" id="status-field">
+                      <option *ngFor="let item of cars" ngValue="{{item.id}}">{{item.im}} - {{item.marque}}</option>
+                    </select>
+                  </div>
+
+                  <!-- <div>
+                    <label for="status-field" class="form-label">Climatiseur</label>
+                    <select class="form-control" name="clim" [(ngModel)]="carsAdd.clim" data-trigger name="status-field" id="status-field">
+                      <option  value="Oui">Oui</option>
+                      <option  value="Non">Non</option>
+                    </select>
+                  </div> -->
+
+                  <!-- <div class="mb-3">
+                    <label for="date-field" class="form-label">Description</label>
+                    <textarea class="form-control" name="description" [(ngModel)]="carsAdd.description" cols="80" rows="1"></textarea>
+                  </div> -->
+
                 </div>
+                
                 <div class="modal-footer">
                   <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Customer</button>
-                    <button type="button" class="btn btn-success" id="edit-btn">Update</button>
+                    <button type="submit" class="btn btn-success" id="add-btn" (click)="Addlocation()">Save</button>
+                    <!-- <button type="button" class="btn btn-success" id="edit-btn">Update</button> -->
                   </div>
                 </div>
               </form>

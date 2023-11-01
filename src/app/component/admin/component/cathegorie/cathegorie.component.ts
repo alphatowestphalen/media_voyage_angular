@@ -32,6 +32,9 @@ export class CathegorieComponent implements OnInit {
     this.cathegorieGetData = {type: ''}
     this.cathegorieService.getCathegorie().subscribe((data)=>{
       this.cathegorie = data;
+      console.log('====================================');
+      console.log(this.cathegorie);
+      console.log('====================================');
     })
   }
 

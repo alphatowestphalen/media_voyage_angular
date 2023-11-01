@@ -1,6 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Location, LocationGet } from 'src/app/model/location/location';
+import { Cars, CarsAll } from 'src/app/model/cars/cars';
+import { Location, LocationGet} from 'src/app/model/location/location';
+import { CarsService } from 'src/app/service/cars/cars.service';
 import { LocationService } from 'src/app/service/location/location.service';
 
 @Component({
@@ -9,28 +11,59 @@ import { LocationService } from 'src/app/service/location/location.service';
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
- location:any;
+ location:LocationGet[] = []; //
+ locationAdd: Location = {
+   person: 0,
+   car_id: 0,
+   start: '',
+   end: '',
+   name: '',
+   adresse: '',
+   number: ''
+ };
+ cars:CarsAll[] = [];
  formattedDate: any;
- date: Date = new Date("2023-10-26T14:29:48.764Z");
-  constructor(private locationService: LocationService) { }
+  constructor(private locationService: LocationService, private carsService: CarsService) { }
 
   ngOnInit() {
     this.getAllLocation();
+    this.getAllCars();
   }
 
-
   public getAllLocation(){
-    this.locationService.getAllLocation().subscribe((data)=>{
+    this.locationService.getAllLocation().forEach((data)=>{
       this.location = data;
-      console.log('====================================');
-      console.log(this.location);
-      console.log('====================================');
+      for (let index = 0; index < this.location.length; index++) {
+        this.location[index].date.start =  this.transformDate(this.location[index].date.start)
+        this.location[index].date.end =  this.transformDate(this.location[index].date.end)
+      }      
     })
   }
 
-  public transformDate(date: Date): void {
-    this.formattedDate = new DatePipe('en-US').transform(date, 'yyyy-MM-dd');
-    return this.formattedDate;
+  public getAllCars(){
+      this.carsService.getAllCars().subscribe((data)=>{
+        this.cars = data;
+        for (let index = 0; index < this.cars.length; index++) {
+          this.location[index].car_id = parseInt((this.cars[index].id).toString());
+          console.log('====================================');
+          console.log(typeof(this.location[index].car_id));
+          console.log('====================================');
+        }
+      })
+  }
+
+  public Addlocation(){
+    console.log('====================================');
+    console.log(this.locationAdd);
+    console.log('====================================');
+    this.locationService.addLoction(this.locationAdd).subscribe((data)=>{
+      this.getAllLocation();
+    })
+  }
+
+  public transformDate(date: string): string  {
+    const d = new DatePipe('en-US').transform(date, 'dd/MM/yyyy');
+    return d ? d :  '';
   }
 
   

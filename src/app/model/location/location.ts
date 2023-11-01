@@ -1,9 +1,13 @@
+
+interface DateLocation {
+    start:string;
+    end:string;
+}
 export interface Location {
         person: number,
         car_id: number,
         start: string,
         end: string,
-        const: string
         name: string,
         adresse: string,
         number: string

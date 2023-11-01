@@ -1,3 +1,5 @@
+import { Cathegorie } from "../cathegorie/cathegorie";
+
 export interface Cars {
   im : string;
   place:number;
@@ -5,10 +7,21 @@ export interface Cars {
   marque: string;
   bagage: number;
   vitesse: string;
-  // clim:any; 
   price : number;
-  // description: string;
-  // occuped: any;
   image_url : string;
   category_id:number;
+}
+export interface CarsAll {
+  id:number;
+  im : string;
+  place:number;
+  carburant: string;
+  marque: string;
+  bagage: number;
+  vitesse: string;
+  price : string;
+  image_url : string;
+  category_id:number;
+  category: Cathegorie,
+  created_at:string;  
 }

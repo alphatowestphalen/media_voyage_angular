@@ -33,13 +33,6 @@ export class AdminCarComponent implements OnInit {
   ngOnInit() {
     this.getAllCars();
     this.getAllCathegorie();
-    this.router.params.subscribe(params => {
-      const id = params['id']; // Access the parameter 'id' from the URL
-      // Now you can use the 'id' value in your component
-      console.log('==================const==================');
-      console.log(id);
-      console.log('====================================');
-    });
   }
 
   private getAllCars(){
@@ -50,6 +43,9 @@ export class AdminCarComponent implements OnInit {
 
   public getAllCathegorie(){
     this.cathegorieService.getCathegorie().subscribe((data)=>{
+      console.log('====================================');
+      console.log(data);
+      console.log('====================================');
       this.categories = data;
     })
   }
@@ -72,11 +68,8 @@ export class AdminCarComponent implements OnInit {
    this.route.navigate(['/adminCars'])
   }
 
-  public findById(id:string){
+  public findById(id:number){
     this.carsService.findById(id).subscribe((data)=>{
-      console.log('==============findById======================');
-      console.log(data);
-      console.log('====================================');
     })
   }
 

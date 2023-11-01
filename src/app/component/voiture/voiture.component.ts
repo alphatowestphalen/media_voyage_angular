@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/.env/environment';
+import { Cars, CarsAll } from 'src/app/model/cars/cars';
+import { CarsService } from 'src/app/service/cars/cars.service';
 
 @Component({
   selector: 'app-voiture',
@@ -7,12 +10,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./voiture.component.css']
 })
 export class VoitureComponent implements OnInit {
-
-  constructor(private route: Router) { }
+  carsAll : CarsAll[] = [];
+  url = environment.baseUrl
+  idSendToCarsDetails: number = 0
+  constructor(private carsService:CarsService, private route: Router) { }
 
   ngOnInit() {
+    this.getCarAll();
   }
-  ShowDetailsCars(){
+
+  public getCarAll(){
+    this.carsService.getAllCars().subscribe((data)=>{      
+      this.carsAll = data;
+      this.carsAll.forEach(element => {
+        element.price = this.formaterNombreAvecSeparateurDeMilliers(element.price);       
+      })
+    })
+  }
+  
+   formaterNombreAvecSeparateurDeMilliers(nombre:string) {
+    return nombre.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
+
+  ShowDetailsCars(id:number){
+    this.idSendToCarsDetails = id;
+    this.carsService.setId(this.idSendToCarsDetails);
     this.route.navigate(['/showdetailCar'])
   }
   ShowChackout(){

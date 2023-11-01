@@ -13,8 +13,12 @@ export class LocationService {
 
 constructor(private _http:HttpClient) { }
 
-public getAllLocation():Observable<LocationGet>{
-    return this._http.get<LocationGet>(this._url + "location")
+public getAllLocation():Observable<LocationGet[]>{
+    return this._http.get<LocationGet[]>(this._url + "location")
+}
+
+public addLoction(location:Location):Observable<Location>{
+  return this._http.post<Location>(this._url + "location", location);
 }
 
 
