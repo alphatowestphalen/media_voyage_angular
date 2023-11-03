@@ -6,11 +6,13 @@ interface DateLocation {
 export interface Location {
         person: number,
         car_id: number,
-        start: string,
-        end: string,
+        start: any,
+        end: any,
         name: string,
         adresse: string,
-        number: string
+        number: string,
+        exist: boolean,
+        client_id : number
 }
 
 export interface LocationGet {

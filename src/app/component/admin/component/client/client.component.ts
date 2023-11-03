@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Client } from 'src/app/model/client.model/client';
+import { Client, ClientDTO } from 'src/app/model/client.model/client';
 import { ClientService } from 'src/app/service/client.service/client.service';
 
 @Component({
@@ -9,6 +9,12 @@ import { ClientService } from 'src/app/service/client.service/client.service';
 })
 export class ClientComponent implements OnInit {
   clientAll: Client[] = [];
+  clientToUpdate: ClientDTO = {
+    name: '',
+    adresse: '',
+    number: ''
+  };
+  idToUpdate: number = 0;
   constructor(private clientService: ClientService) { }
 
   ngOnInit() {
@@ -17,11 +23,25 @@ export class ClientComponent implements OnInit {
 
   public getClientAll() {
     this.clientService.getAllClient().subscribe((data)=>{
-      console.log('====================================');
-      console.log(data);
-      console.log('====================================');
       this.clientAll = data;
     })
+  }
+
+  public setPhoneNumber(number: string) {
+    return number.replace(/(\d{2})(\d{2})(\d{3})(\d{2})/, '$1 $2 $3 $4')
+  }
+
+  public getClient(id : number) {
+    this.idToUpdate = id
+    this.clientService.getClientById(id).subscribe((data)=>{
+      this.clientToUpdate = data;
+    })
+  }
+
+  public updateClient() {
+    this.clientService.updateClient(this.idToUpdate, this.clientToUpdate).subscribe((data) => {
+      this.getClientAll()
+    });
   }
 
 }

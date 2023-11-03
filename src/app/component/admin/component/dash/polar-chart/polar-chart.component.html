@@ -1,0 +1,13 @@
+<div>
+  <h3>Nombre de location par voiture</h3>
+  <div>
+    <canvas
+    *ngIf="allCars != null && allCars.length"
+      baseChart
+      class="chart"
+      [data]="polarAreaChartData"
+      [legend]="polarAreaLegend"
+      [type]="polarAreaChartType"
+    ></canvas>
+  </div>
+</div>

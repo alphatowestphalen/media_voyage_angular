@@ -1,13 +1,14 @@
-import { CUSTOM_ELEMENTS_SCHEMA,NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { SideBarComponent } from 'src/app/component/admin/layout/sideBar/sideBar.component';
 import { DashComponent } from 'src/app/component/admin/component/dash/dash.component';
-// import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NgChartsModule
   ],
   declarations: [
     DashboardComponent,

@@ -18,3 +18,9 @@ export interface Client {
         updated_at: string
       }]
 }
+
+export interface ClientDTO {
+  name : string
+  adresse : string
+  number : string
+}

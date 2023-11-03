@@ -23,6 +23,12 @@ import { DateManage } from './utils/compteDay';
 import { SingInComponent } from './component/Auth/SingIn/SingIn.component';
 // import { NgApexchartsModule } from "ng-apexcharts";
 
+import { ChartModule } from './modules/chart/chart.module';
+import { NgChartsModule } from 'ng2-charts';
+import { LineChartComponent } from './component/admin/component/dash/line-chart/line-chart.component';
+import { PolarChartComponent } from './component/admin/component/dash/polar-chart/polar-chart.component';
+import { DetailCarComponent } from './component/admin/component/adminCar/detail-car/detail-car.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +47,9 @@ import { SingInComponent } from './component/Auth/SingIn/SingIn.component';
     LocationComponent,
     OccupationComponent,
     UserComponent,
+    LineChartComponent,
+    PolarChartComponent,
+    DetailCarComponent,
     SingInComponent,
   ],
   imports: [
@@ -48,8 +57,10 @@ import { SingInComponent } from './component/Auth/SingIn/SingIn.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    DatePipe
+    DatePipe,
     // NgApexchartsModule
+    ChartModule,
+    NgChartsModule
   ],
   providers: [DateManage],
   bootstrap: [AppComponent],
