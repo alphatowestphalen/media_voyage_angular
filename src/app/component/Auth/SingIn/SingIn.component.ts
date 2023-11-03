@@ -17,11 +17,12 @@ export class SingInComponent implements OnInit {
 
   singIn(){
     if (this.username === 'admin@admin.com' && this.password === '123') {
+      this.showModal = false;
       this.route.navigate(['/dash']);      
     } else {
       this.showModal = true;
       console.log('====================================');
-      console.log(this.username, this.password);
+      console.table(this.username);
       console.log('====================================');
     }
   }

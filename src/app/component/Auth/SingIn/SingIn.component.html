@@ -57,12 +57,18 @@
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Email</label>
                                                 <input type="text" name="username" ngModel required class="form-control" [(ngModel)]="username" id="username" placeholder="Enter email">
+                                                <div class="text-red" *ngIf="showModal">
+                                                    Please choose a unique and valid username.
+                                                </div>
                                             </div>
                     
                                             <div class="mb-3">
                                                 <label class="form-label" for="password-input">Mots de Passe</label>
                                                 <div class="position-relative auth-pass-inputgroup mb-3">
                                                     <input type="password" ngModel required name="password" [(ngModel)]="password"  class="form-control pe-5" placeholder="Enter le Mot de Passe" id="password-input">
+                                                    <div class="text-red" *ngIf="showModal">
+                                                        Please choose a unique and valid username.
+                                                    </div>
                                                 </div>
                                             </div>
                                             
@@ -92,28 +98,3 @@
     <!-- end auth page content -->
 </div>
 <!-- end auth-page-wrapper -->
-
-<!-- Modal -->
-<div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="false">
-    <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-        <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            id="btn-close"></button>
-        </div>
-        <div class="modal-body">
-        <div class="mt-2 text-center">
-
-            <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-            <h4>Are you Sure ?</h4>
-            <p class="text-muted mx-4 mb-0">Verifier votre  Email et mode de passe</p>
-            </div>
-        </div>
-        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-            <button type="button" class="btn w-sm btn-danger" data-bs-dismiss="modal">OK</button>
-        </div>
-        </div>
-    </div>
-    </div>
-</div>
-<!--end modal -->
