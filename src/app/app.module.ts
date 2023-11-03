@@ -19,6 +19,8 @@ import { OccupationComponent } from './component/admin/component/occupation/occu
 import { UserComponent } from './component/admin/component/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DateManage } from './utils/compteDay';
+import { SingInComponent } from './component/Auth/SingIn/SingIn.component';
 // import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
@@ -38,7 +40,8 @@ import { FormsModule } from '@angular/forms';
     ClientComponent,
     LocationComponent,
     OccupationComponent,
-    UserComponent
+    UserComponent,
+    SingInComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { FormsModule } from '@angular/forms';
     DatePipe
     // NgApexchartsModule
   ],
+  providers: [DateManage],
   bootstrap: [AppComponent],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

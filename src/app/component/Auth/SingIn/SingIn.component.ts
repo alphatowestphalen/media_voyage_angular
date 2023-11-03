@@ -7,13 +7,22 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./SingIn.component.css']
 })
 export class SingInComponent implements OnInit {
-
+  username: string = '';
+  password: string = '';
+  showModal: boolean = false;
   constructor( private route: Router) { }
 
   ngOnInit() {
   }
 
   singIn(){
-    this.route.navigate(['/dash']);
+    if (this.username === 'admin@admin.com' && this.password === '123') {
+      this.route.navigate(['/dash']);      
+    } else {
+      this.showModal = true;
+      console.log('====================================');
+      console.log(this.username, this.password);
+      console.log('====================================');
+    }
   }
 }

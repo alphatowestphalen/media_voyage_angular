@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/.env/environment';
 import { Cars, CarsAll } from 'src/app/model/cars/cars';
+import { HomeService } from '../home/home.service';
 
 @Injectable({
     providedIn: 'root'
@@ -10,8 +11,9 @@ import { Cars, CarsAll } from 'src/app/model/cars/cars';
 export class CarsService {
    private _url = environment.baseUrl;
    private id:number = 0;
+   dateTwo:any;
 
-constructor(private _http:HttpClient) { }
+constructor(private _http:HttpClient, private homeService: HomeService) { }
 
 public getAllCars():Observable<CarsAll[]>{
     return this._http.get<CarsAll[]>(this._url + "car")
@@ -35,6 +37,11 @@ public setId(id:number){
 
 public getId():number{
     return this.id;
+}
+
+public getCarsTwoDate():Observable<CarsAll[]>{
+       this.dateTwo =  this.homeService.getDates(); 
+       return this._http.post<CarsAll[]>(this._url + "car/available", this.dateTwo);
 }
 
 }

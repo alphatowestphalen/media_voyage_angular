@@ -48,56 +48,32 @@
                             <div class="col-lg-6">
                                 <div class="p-lg-5 p-4">
                                     <div>
-                                        <h5 class="text-primary">Welcome Back !</h5>
+                                        <h5 class="text-primary">Bienvenue !</h5>
                                         <p class="text-muted">Sign in to continue to MediaVoyage.</p>
                                     </div>
     
                                     <div class="mt-4">
-                                        <form>
-            
+                                        <form #f = "ngForm">
                                             <div class="mb-3">
-                                                <label for="username" class="form-label">Username</label>
-                                                <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                                <label for="username" class="form-label">Email</label>
+                                                <input type="text" name="username" ngModel required class="form-control" [(ngModel)]="username" id="username" placeholder="Enter email">
                                             </div>
                     
                                             <div class="mb-3">
-                                                <div class="float-end">
-                                                    <a href="auth-pass-reset-cover.html" class="text-muted">Forgot password?</a>
-                                                </div>
-                                                <label class="form-label" for="password-input">Password</label>
+                                                <label class="form-label" for="password-input">Mots de Passe</label>
                                                 <div class="position-relative auth-pass-inputgroup mb-3">
-                                                    <input type="password" class="form-control pe-5" placeholder="Enter password" id="password-input">
-                                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                                    <input type="password" ngModel required name="password" [(ngModel)]="password"  class="form-control pe-5" placeholder="Enter le Mot de Passe" id="password-input">
                                                 </div>
-                                            </div>
-                    
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
-                                                <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                             </div>
                                             
                                             <div class="mt-4">
-                                                <button (click)="singIn()" class="btn btn-success w-100" type="submit">Sign In</button>
+                                                <button  (click)="singIn()" [disabled]="f.invalid" class="btn btn-success w-100" data-bs-toggle="modal"
+                                                data-bs-target="#deleteRecordModal" data-bs-dismiss="modal" type="submit">Sign In</button>
                                             </div>
                 
-                                            <div class="mt-4 text-center">
-                                                <div class="signin-other-title">
-                                                    <h5 class="fs-14 mb-4 title">Sign In with</h5>
-                                                </div>
-
-                                                <div>
-                                                    <button type="button" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-facebook-fill fs-16"></i></button>
-                                                    <button type="button" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-google-fill fs-16"></i></button>
-                                                   
-                                                </div>
-                                            </div>
-        
                                         </form>
                                     </div>
-
-                                    <div class="mt-5 text-center">
-                                        <p class="mb-0">Don't have an account ? <a href="/logOut" class="fw-bold text-primary text-decoration-underline"> Signup</a> </p>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <!-- end col -->
@@ -116,3 +92,28 @@
     <!-- end auth page content -->
 </div>
 <!-- end auth-page-wrapper -->
+
+<!-- Modal -->
+<div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="false">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            id="btn-close"></button>
+        </div>
+        <div class="modal-body">
+        <div class="mt-2 text-center">
+
+            <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+            <h4>Are you Sure ?</h4>
+            <p class="text-muted mx-4 mb-0">Verifier votre  Email et mode de passe</p>
+            </div>
+        </div>
+        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+            <button type="button" class="btn w-sm btn-danger" data-bs-dismiss="modal">OK</button>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+<!--end modal -->

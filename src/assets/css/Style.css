@@ -201,7 +201,7 @@ main .site-title h1{
 }
 
 main .site-title .btn{
-    margin: 1.8rem;
+    /* margin: 1.8rem; */
     background: var(--sky);
 }
 
@@ -434,33 +434,33 @@ main .post-content .post-title a{
 
 /* ----------------- Footer --------------------- */
 
-footer.footer{
+footer.footers{
     height: 100%;
     background: var(--bg-color);
     position: relative;
 }
 
-footer.footer .container{
+footer.footers .container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
 
-footer.footer .container > div{
+footer.footers .container > div{
     flex-grow: 1;
     flex-basis: 0;
     padding: 3rem .9rem;
 }
 
-footer.footer .container h2{
+footer.footers .container h2{
     color: var(--white);
 }
 
-footer.footer .newsletter .form-element{
+footer.footers .newsletter .form-element{
     background: black;
     display: inline-block;
 }
 
-footer.footer .newsletter .form-element input{
+footer.footers .newsletter .form-element input{
     padding: .5rem .7rem;
     border: none;
     background: transparent;
@@ -470,44 +470,44 @@ footer.footer .newsletter .form-element input{
     width: 74%;
 }
 
-footer.footer .newsletter .form-element span{
+footer.footers .newsletter .form-element span{
     background: var(--sky);
     padding: .5rem .7rem;
     cursor: pointer;
 }
 
-footer.footer .instagram div > img{
+footer.footers .instagram div > img{
     display: inline-block;
     width: 25%;
     height: 50%;
     margin: .3rem .4rem;
 }
 
-footer.footer .follow div i{
+footer.footers .follow div i{
     color: var(--white);
     padding: 0 .4rem;
 }
 
-footer.footer .rights{
+footer.footers .rights{
     justify-content: center;
     font-family: var(--Josefin);
 }
 
-footer.footer .rights h4 a{
+footer.footers .rights h4 a{
     color: var(--white);
 }
 
-footer.footer .move-up{
+footer.footers .move-up{
     position: absolute;
     right: 6%;
     top: 50%;
 }
 
-footer.footer .move-up span{
+footer.footers.move-up span{
     color: var(--midnight);
 }
 
-footer.footer .move-up span:hover{
+footer.footers.move-up span:hover{
     color: var(--white);
     cursor: pointer;
 }
@@ -527,7 +527,7 @@ footer.footer .move-up span:hover{
         display: none !important;
     }
 
-    footer.footer .container{
+    footer.footers.container{
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -551,7 +551,7 @@ footer.footer .move-up span:hover{
         grid-template-columns: 100%;
     }
 
-    footer.footer .container{
+    footer.footers.container{
         grid-template-columns: repeat(1, 1fr);
     }
 
@@ -572,7 +572,7 @@ footer.footer .move-up span:hover{
         display: none;
     }
 
-    footer.footer .container > div{
+    footer.footers.container > div{
         padding:  1rem .9rem !important;
     }
 

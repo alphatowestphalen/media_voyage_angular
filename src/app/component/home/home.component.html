@@ -11,25 +11,22 @@
             <div class="site-background"  data-aos="fade-up" data-aos-delay="100">
                 <h3>Media Voyage</h3>
                 <h1>Location des Voitures</h1>
+                <form #addForm ="ngForm">
                 <div class="formulaireAcceils">
-                    <div>
-                        <label class="form-label mb-1">Date de Imprint</label>
-                        <input type="date" class="form-control">
+                        <div>
+                            <label class="form-label mb-1">Date de Imprint</label>
+                            <input name="start" type="date" [(ngModel)]="dateSend.start" class="form-control">
+                        </div>
+                        <div>
+                            <label class="form-label mb-1">Date de Retour</label>
+                            <input name="end" type="date" [(ngModel)]="dateSend.end" class="form-control">
+                        </div>
+                        <div>
+                            <button type="submit" (click)="search()" class="btn">Recherche</button>
+                        </div>
+                        
                     </div>
-                    <div>
-                        <label class="form-label mb-1">Heur de Imprint</label>
-                        <input type="time" class="form-control">
-                    </div>
-                    <div>
-                        <label class="form-label mb-1">Date de Retour</label>
-                        <input type="date" class="form-control">
-                    </div>
-                    <div>
-                        <label class="form-label mb-1">Heurs de Retour</label>
-                        <input type="time" class="form-control">
-                    </div>
-                </div>
-                <button class="btn">Explore</button>
+                </form>
             </div>
         </section>
 
@@ -323,7 +320,7 @@
 
     <!-- --------------------------- Footer ---------------------------------------- -->
 
-    <footer class="footer">
+    <footer class="footers">
         <div class="container">
             <div class="about-us" data-aos="fade-right" data-aos-delay="200">
                 <h2>About us</h2>
@@ -361,13 +358,7 @@
                 </div>
             </div>
         </div>
-        <div class="rights flex-row">
-            <h4 class="text-gray">
-                Copyright ©2019 All rights reserved | made by
-                <a href="www.youtube.com/c/dailytuition" target="_black">Daily Tuition <i class="fab fa-youtube"></i>
-                    Channel</a>
-            </h4>
-        </div>
+        
         <div class="move-up">
             <span><i class="fas fa-arrow-circle-up fa-2x"></i></span>
         </div>

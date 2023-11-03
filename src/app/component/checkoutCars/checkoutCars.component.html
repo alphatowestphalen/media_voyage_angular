@@ -1,5 +1,5 @@
 <div class="row m-4 mt-4">
-  <div class="col-xl-8">
+  <div class="col-xl-7">
       <div class="card">
           <div class="card-body checkout-tab">
 
@@ -9,7 +9,7 @@
                       <ul class="nav nav-pills nav-justified custom-nav" role="tablist">
                           <li class="nav-item" role="presentation">
                               <button class="nav-link fs-15 p-3 active" id="pills-bill-info-tab" data-bs-toggle="pill" data-bs-target="#pills-bill-info" type="button" role="tab" aria-controls="pills-bill-info" aria-selected="true" data-position="0"><i class="ri-user-2-line fs-16 p-2 bg-soft-primary text-primary rounded-circle align-middle me-2"></i>
-                                  Personal Info</button>
+                                  Info Pesonnel</button>
                           </li>
                           <li class="nav-item" role="presentation">
                               <button class="nav-link fs-15 p-3" id="pills-payment-tab" data-bs-toggle="pill" data-bs-target="#pills-payment" type="button" role="tab" aria-controls="pills-payment" aria-selected="false" data-position="2"><i class="ri-bank-card-line fs-16 p-2 bg-soft-primary text-primary rounded-circle align-middle me-2"></i>
@@ -22,7 +22,7 @@
                   </div>
 
                   <div class="tab-content">
-                      <div class="tab-pane fade active show" id="pills-bill-info" role="tabpanel" aria-labelledby="pills-bill-info-tab">
+                      <div class="tab-pane fade active show" id="pills-bill-info">
                           <div>
                               <h5 class="mb-1">Billing Information</h5>
                               <p class="text-muted mb-4">Please fill all information below</p>
@@ -100,7 +100,7 @@
                       </div>
                       <!-- end tab pane -->
 
-                      <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
+                      <div class="tab-pane" *ngIf="true" id="pills-payment">
                           <div>
                               <h5 class="mb-1">Payment Selection</h5>
                               <p class="text-muted mb-4">Please select and enter your billing
@@ -179,27 +179,8 @@
                                   transaction is secured with SSL encryption
                               </div>
                           </div>
-
                           <div class="d-flex align-items-start gap-3 mt-4">
-                            <!-- <button class="btn btn-primary btn-label right ms-auto nexttab" id="pills-finish-tab" data-bs-toggle="pill" data-bs-target="#pills-finish" type="button" role="tab" aria-controls="pills-finish" aria-selected="false" data-position="3"><i class="ri-shopping-basket-line label-icon align-middle fs-16 ms-2"></i>Finish</button> -->
-                              <button type="button" class="btn btn-primary btn-label right ms-auto nexttab" data-nexttab="#pills-finish"><i class="ri-shopping-basket-line label-icon align-middle fs-16 ms-2"></i>Save</button>
-                          </div>
-                      </div>
-                      <!-- end tab pane -->
-
-                      <div class="tab-pane fade" id="pills-finish" role="tabpanel" aria-labelledby="pills-finish-tab">
-                          <div class="text-center py-5">
-
-                              <div class="mb-4">
-                                <i class=" ri-check-fill w-4"></i>
-                                  <!-- <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon> -->
-                              </div>
-                              <h5>Thank you ! Your Order is Completed !</h5>
-                              <p class="text-muted">You will receive an order confirmation email <a href="/cars" class="text-decoration-underline">List Cars</a>
-                                  with
-                                  details of your order.</p>
-
-                              <h3 class="fw-semibold">Order ID: <a href="apps-ecommerce-order-details.html" class="text-decoration-underline">VZ2451</a></h3>
+                              <button type="button" class="btn btn-primary btn-label right ms-auto"><i class="ri-shopping-basket-line label-icon align-middle fs-16 ms-2"></i>Save</button>
                           </div>
                       </div>
                       <!-- end tab pane -->
@@ -213,7 +194,7 @@
   </div>
   <!-- end col -->
 
-  <div class="col-xl-4">
+  <div class="col-xl-5">
       <div class="card">
           <div class="card-header">
               <div class="d-flex">
@@ -227,74 +208,24 @@
                   <table class="table table-borderless align-middle mb-0">
                       <thead class="table-light text-muted">
                           <tr>
-                              <th style="width: 90px;" scope="col">Product</th>
-                              <th scope="col">Product Info</th>
-                              <th scope="col" class="text-end">Price</th>
+                              <th style="width: 90px;" scope="col">Voiture</th>
+                              <th scope="col">Info Voiture</th>
+                              <th scope="col" class="text-end">Total</th>
                           </tr>
                       </thead>
                       <tbody>
                           <tr>
                               <td>
                                   <div class="avatar-md bg-light rounded p-1">
-                                      <img src="assets/images/products/img-8.png" alt="" class="img-fluid d-block">
+                                      <img src="{{url + carsAll.image_url}}" alt="" class="img-fluid d-block">
                                   </div>
                               </td>
                               <td>
-                                  <h5 class="fs-15"><a href="apps-ecommerce-product-details.html" class="text-dark">Sweatshirt for Men (Pink)</a>
+                                  <h5 class="fs-15"><a href="apps-ecommerce-product-details.html" class="text-dark">{{carsAll.category.type}} ({{carsAll.marque}})</a>
                                   </h5>
-                                  <p class="text-muted mb-0">$ 119.99 x 2</p>
+                                  <p class="text-muted mb-0">Ar {{price}} x {{day}}</p>
                               </td>
-                              <td class="text-end">$ 239.98</td>
-                          </tr>
-                          <tr>
-                              <td>
-                                  <div class="avatar-md bg-light rounded p-1">
-                                      <img src="assets/images/products/img-7.png" alt="" class="img-fluid d-block">
-                                  </div>
-                              </td>
-                              <td>
-                                  <h5 class="fs-15"><a href="apps-ecommerce-product-details.html" class="text-dark">Noise Evolve Smartwatch</a></h5>
-                                  <p class="text-muted mb-0">$ 94.99 x 1</p>
-                              </td>
-                              <td class="text-end">$ 94.99</td>
-                          </tr>
-                          <tr>
-                              <td>
-                                  <div class="avatar-md bg-light rounded p-1">
-                                      <img src="assets/images/products/img-3.png" alt="" class="img-fluid d-block">
-                                  </div>
-                              </td>
-                              <td>
-                                  <h5 class="fs-15"><a href="apps-ecommerce-product-details.html" class="text-dark">350 ml Glass Grocery Container</a>
-                                  </h5>
-                                  <p class="text-muted mb-0">$ 24.99 x 1</p>
-                              </td>
-                              <td class="text-end">$ 24.99</td>
-                          </tr>
-                          <tr>
-                              <td class="fw-semibold" colspan="2">Sub Total :</td>
-                              <td class="fw-semibold text-end">$ 359.96</td>
-                          </tr>
-                          <tr>
-                              <td colspan="2">Discount <span class="text-muted">(VELZON15)</span>
-                                  : </td>
-                              <td class="text-end">- $ 50.00</td>
-                          </tr>
-                          <tr>
-                              <td colspan="2">Shipping Charge :</td>
-                              <td class="text-end">$ 24.99</td>
-                          </tr>
-                          <tr>
-                              <td colspan="2">Estimated Tax (12%): </td>
-                              <td class="text-end">$ 18.20</td>
-                          </tr>
-                          <tr class="table-active">
-                              <th colspan="2">Total (USD) :</th>
-                              <td class="text-end">
-                                  <span class="fw-semibold">
-                                      $353.15
-                                  </span>
-                              </td>
+                              <td class="text-end"><b>Ar {{montant}}</b> </td>
                           </tr>
                       </tbody>
                   </table>
