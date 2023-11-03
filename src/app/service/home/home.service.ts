@@ -9,8 +9,16 @@ import { Cars } from 'src/app/model/cars/cars';
 })
 export class HomeService {
   private url = environment.baseUrl;
-
+  dates:any;
 constructor(private http:HttpClient) { }
+
+setDates(dataEndStart:any){
+  this.dates = dataEndStart;
+}
+
+getDates(){
+  return this.dates;
+}
 
 getVoiture(): Observable<Cars[]>{
   return this.http.get<Cars[]>(this.url + 'voiture');

@@ -32,7 +32,6 @@ export class CarDetailsComponent implements OnInit {
     type: '',
     }
   };
-  carsAll : CarsAll[] = [];
   url = environment.baseUrl;
 
   constructor(private route: Router, private carsService:CarsService) { }
@@ -47,14 +46,18 @@ export class CarDetailsComponent implements OnInit {
 
   getIdCar(){
     this.id = this.carsService.getId();
-    this.getCarsById(this.id);
+    if (this.id == 0) {
+      this.route.navigate(['/cars']);
+    } else {
+      this.getCarsById(this.id);
+    }
   }
 
   getCarsById(id:number){
-    this.carsService.findById(id).subscribe((data)=>{
-      this.getAll = data;
-      this.getAll.price = this.formaterNombreAvecSeparateurDeMilliers(this.getAll.price);
-      })
+      this.carsService.findById(id).subscribe((data)=>{
+        this.getAll = data;
+        this.getAll.price = this.formaterNombreAvecSeparateurDeMilliers(this.getAll.price);
+        })
   }
 
   formaterNombreAvecSeparateurDeMilliers(nombre:string) {

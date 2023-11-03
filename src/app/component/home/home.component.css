@@ -1,4 +1,8 @@
 .formulaireAcceils{
     display:flex;
     gap: 10px;
+    align-items: center;
+}
+.formulaireAcceils .btn{
+    margin-top: 23px;
 }
