@@ -9,3 +9,7 @@ button{
     align-items: stretch;
     gap: 1rem;
 }
+
+.textarea {
+  padding-inline : 1.25rem
+}

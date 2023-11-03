@@ -5,10 +5,10 @@ export interface Cars {
   place:number;
   carburant: string;
   marque: string;
+  description : string
   bagage: number;
   vitesse: string;
   price : number;
-  image_url : string;
   category_id:number;
 }
 export interface CarsAll {
@@ -17,11 +17,12 @@ export interface CarsAll {
   place:number;
   carburant: string;
   marque: string;
+  description: string
   bagage: number;
   vitesse: string;
   price : string;
   image_url : string;
   category_id:number;
   category: Cathegorie,
-  created_at:string;  
+  created_at:string;
 }

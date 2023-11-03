@@ -1,0 +1,11 @@
+<div>
+  <h3>Statistique des 3 derniers mois</h3>
+  <canvas
+  *ngIf="dataSets != null && dataSets.length"
+    class="chart"
+    baseChart
+    [data]="barChartData"
+    [options]="barChartOptions"
+    [type]="barChartType"
+  ></canvas>
+</div>

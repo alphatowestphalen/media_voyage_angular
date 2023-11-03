@@ -11,16 +11,46 @@
   <!-- Start right Content here -->
   <!-- ============================================================== -->
   <div class="main-content">
-
     <div class="page-content">
       <div class="container-fluid">
-          <p>Statistique</p>
+        <div>
+          <div class="row chart-side">
+            <div class="col side-1">
+              <div class="bar-chart">
+                <h3>Statistique sur les locations</h3>
+                <canvas
+                  *ngIf="allCars != null && allCars.length"
+                  height="100"
+                  baseChart
+                  class="chart"
+                  [data]="barChartData"
+                  [options]="barChartOptions"
+                  [plugins]="barChartPlugins"
+                  [type]="barChartType"
+                ></canvas>
+                <!-- <button
+                  mat-button
+                  mat-raised-button
+                  color="primary"
+                  (click)="randomize()"
+                >
+                  Update
+                </button> -->
+              </div>
+              <div class="line-chart">
+                <app-line-chart></app-line-chart>
+              </div>
+            </div>
+            <div class="polar-chart">
+                <app-polar-chart></app-polar-chart>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
   </div>
   <!-- end main content-->
-
 </div>
 <!-- END layout-wrapper -->

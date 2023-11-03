@@ -17,15 +17,15 @@ public getAllCars():Observable<CarsAll[]>{
     return this._http.get<CarsAll[]>(this._url + "car")
 }
 
-public addCars(cars:Cars):Observable<Cars>{
+public addCars(cars:any):Observable<Cars>{
     return this._http.post<Cars>(this._url + "car",cars)
 }
 
-public findById(id:number):Observable<CarsAll[]>{
-    return this._http.get<CarsAll[]>(this._url + "car/" + id)
+public findById(id:number):Observable<CarsAll>{
+    return this._http.get<CarsAll>(this._url + "car/" + id)
 }
 
-public updateCars(id:string,cars:Cars):Observable<Cars>{
+public updateCars(id:string,cars:any):Observable<Cars>{
     return this._http.put<Cars>(this._url + "car/" + id,cars)
 }
 
@@ -35,6 +35,14 @@ public setId(id:number){
 
 public getId():number{
     return this.id;
+}
+
+public deleteCar(id:string):Observable<Cars>{
+  return this._http.delete<Cars>(this._url + "car/" + id)
+}
+
+public getAvailableCar(data: any):Observable<Cars>{
+return this._http.post<Cars>(this._url + "car/available", data)
 }
 
 }

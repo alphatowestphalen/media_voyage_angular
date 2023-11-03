@@ -21,6 +21,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 // import { NgApexchartsModule } from "ng-apexcharts";
 
+import { ChartModule } from './modules/chart/chart.module';
+import { NgChartsModule } from 'ng2-charts';
+import { LineChartComponent } from './component/admin/component/dash/line-chart/line-chart.component';
+import { PolarChartComponent } from './component/admin/component/dash/polar-chart/polar-chart.component';
+import { DetailCarComponent } from './component/admin/component/adminCar/detail-car/detail-car.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,15 +44,20 @@ import { FormsModule } from '@angular/forms';
     ClientComponent,
     LocationComponent,
     OccupationComponent,
-    UserComponent
+    UserComponent,
+    LineChartComponent,
+    PolarChartComponent,
+    DetailCarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    DatePipe
+    DatePipe,
     // NgApexchartsModule
+    ChartModule,
+    NgChartsModule
   ],
   bootstrap: [AppComponent],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
