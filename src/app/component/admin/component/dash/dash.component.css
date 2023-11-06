@@ -1,10 +1,11 @@
 .bar-chart {
-  width: 42vw;
+  width: 40vw;
 }
 
 .polar-chart {
   width: 30vw;
 }
+
 .line-chart {
   width: 42vw;
 }
@@ -12,6 +13,7 @@
 .chart-side {
   display: flex;
 }
+
 .side-1 {
   width: 50vw;
 }
