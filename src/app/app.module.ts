@@ -19,7 +19,6 @@ import { OccupationComponent } from './component/admin/component/occupation/occu
 import { UserComponent } from './component/admin/component/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { DateManage } from './utils/compteDay';
 import { SingInComponent } from './component/Auth/SingIn/SingIn.component';
 // import { NgApexchartsModule } from "ng-apexcharts";
 
@@ -28,6 +27,8 @@ import { NgChartsModule } from 'ng2-charts';
 import { LineChartComponent } from './component/admin/component/dash/line-chart/line-chart.component';
 import { PolarChartComponent } from './component/admin/component/dash/polar-chart/polar-chart.component';
 import { DetailCarComponent } from './component/admin/component/adminCar/detail-car/detail-car.component';
+import { DateManage } from './utils/compteDay';
+import { DateUtils } from './utils/dates.utils';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { DetailCarComponent } from './component/admin/component/adminCar/detail-
     ChartModule,
     NgChartsModule
   ],
-  providers: [DateManage],
+  providers: [DateManage, DateUtils],
   bootstrap: [AppComponent],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

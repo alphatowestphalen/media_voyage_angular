@@ -43,8 +43,8 @@ public deleteCar(id:string):Observable<Cars>{
   return this._http.delete<Cars>(this._url + "car/" + id)
 }
 
-public getAvailableCar(data: any):Observable<Cars>{
-return this._http.post<Cars>(this._url + "car/available", data)
+public getAvailableCar(data: any):Observable<Cars[]>{
+return this._http.post<Cars[]>(this._url + "car/available", data)
 }
 public getCarsTwoDate():Observable<CarsAll[]>{
        this.dateTwo =  this.homeService.getDates();

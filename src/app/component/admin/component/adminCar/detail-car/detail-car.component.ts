@@ -15,4 +15,16 @@ export class DetailCarComponent {
 
   }
 
+  public setDate(date: string) {
+    return new Date(date).toLocaleDateString("fr-FR", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    })
+  }
+
+  public setPrice(price: string) {
+    return price.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
 }

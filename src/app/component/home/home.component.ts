@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarsService } from 'src/app/service/cars/cars.service';
 import { HomeService } from 'src/app/service/home/home.service';
+import { DateUtils } from 'src/app/utils/dates.utils';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +14,8 @@ export class HomeComponent implements OnInit{
     start: '',
     end: ''
   }
-  constructor(private carsService:CarsService, private homeService: HomeService ,private route: Router){}
-  
+  constructor(private carsService:CarsService, private homeService: HomeService ,private route: Router, private dateUtils : DateUtils){}
+
   ngOnInit(): void {
     this.getCarAll();
     // this.algo();
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit{
   public search(){
     this.homeService.setDates(this.dateSend);
     this.route.navigate(['/cars'])
+    this.dateUtils.setDateUtils(this.dateSend.start, this.dateSend.end)
   }
 
   // algo(){
@@ -45,16 +47,16 @@ export class HomeComponent implements OnInit{
   //           boll = false;
   //       }
   //     }
-  //     console.log(tableau);      
+  //     console.log(tableau);
   //     console.log(boll);
 
 
   //   }
   // }
-  
-  
-  
-  
- 
+
+
+
+
+
 
 }
