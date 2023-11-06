@@ -7,7 +7,7 @@
   <app-sideBar></app-sideBar>
   <!-- Vertical Overlay-->
   <div class="vertical-overlay"></div>
-  
+
   <div class="main-content">
 
     <div class="page-content">
@@ -17,7 +17,7 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title mb-0">Add, Edit & Remove User</h4>
+                <h4 class="card-title mb-0">Gestion des utilisateurs</h4>
               </div><!-- end card header -->
 
               <div class="card-body">
@@ -26,7 +26,7 @@
                     <div class="col-sm-auto">
                       <div>
                         <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn"
-                          data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Add</button>
+                          data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Ajouter un nouveau utilisateur</button>
                       </div>
                     </div>
                     <div class="col-sm">
@@ -44,9 +44,9 @@
                       <thead class="table-light">
                         <tr>
                           <th class="sort" data-sort="ID">ID</th>
-                          <th class="sort" data-sort="Numero IM">email</th>
-                          <th class="sort" data-sort="Numero IM">name</th>
-                          <th class="sort" data-sort="Numero IM">password</th>
+                          <th class="sort" data-sort="Numero IM">Mail</th>
+                          <th class="sort" data-sort="Numero IM">Nom</th>
+                          <th class="sort" data-sort="Numero IM">Adresse</th>
                           <th class="sort" data-sort="action">Action</th>
                         </tr>
                       </thead>
@@ -54,17 +54,17 @@
                         <tr>
                           <td class="customer_name">{{item.id}}</td>
                           <td class="customer_name">{{item.email}}</td>
-                          <td class="customer_name">25-02-2023</td>
-                          <td class="customer_name">25-02-2023</td>
+                          <td class="customer_name">{{item.name}}</td>
+                          <td class="customer_name">{{item.adresse}}</td>
                           <td>
                             <div class="d-flex gap-2">
                               <div class="edit">
                                 <button class="btn btn-sm btn-primary edit-item-btn" data-bs-toggle="modal"
-                                  data-bs-target="#showModal">Edit</button>
+                                  data-bs-target="#showModal">Modifier</button>
                               </div>
                               <div class="remove">
                                 <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                  data-bs-target="#deleteRecordModal">Remove</button>
+                                  data-bs-target="#deleteRecordModal">Enlever</button>
                               </div>
                             </div>
                           </td>
@@ -124,9 +124,8 @@
                 </div>
                 <div class="modal-footer">
                   <div class="hstack gap-2 justify-content-end">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Customer</button>
-                    <button type="button" class="btn btn-success" id="edit-btn">Update</button>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Ajouter</button>
                   </div>
                 </div>
               </form>

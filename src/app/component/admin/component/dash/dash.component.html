@@ -20,7 +20,7 @@
                 <h3>Statistique sur les locations</h3>
                 <canvas
                   *ngIf="allCars != null && allCars.length"
-                  height="200"
+                  height="100"
                   baseChart
                   class="chart"
                   [data]="barChartData"
@@ -28,6 +28,7 @@
                   [plugins]="barChartPlugins"
                   [type]="barChartType"
                 ></canvas>
+                <hr>
                 <!-- <button
                   mat-button
                   mat-raised-button

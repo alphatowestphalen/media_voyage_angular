@@ -5,6 +5,7 @@ import { Cathegorie } from 'src/app/model/cathegorie/cathegorie';
 import { CarsService } from 'src/app/service/cars/cars.service';
 import { CathegorieService } from 'src/app/service/categotie/cathegorie.service';
 import { HomeService } from 'src/app/service/home/home.service';
+import { DateUtils } from 'src/app/utils/dates.utils';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +15,8 @@ import { HomeService } from 'src/app/service/home/home.service';
 export class HomeComponent implements OnInit {
   dateSend = {
     start: '',
-    end: '',
-  };
-
+    end: ''
+  }
   cars: CarsAll[] = [];
   cathegorie: Cathegorie[] = [];
   disable: boolean = false;
@@ -25,7 +25,8 @@ export class HomeComponent implements OnInit {
     private carsService: CarsService,
     private homeService: HomeService,
     private cathegorieService: CathegorieService,
-    private route: Router
+    private route: Router,
+    private dateUtils : DateUtils
   ) {}
 
   ngOnInit(): void {
@@ -65,7 +66,8 @@ export class HomeComponent implements OnInit {
 
   public search() {
     this.homeService.setDates(this.dateSend);
-    this.route.navigate(['/cars']);
+    this.route.navigate(['/cars'])
+    this.dateUtils.setDateUtils(this.dateSend.start, this.dateSend.end)
   }
 
   // algo(){
@@ -85,4 +87,10 @@ export class HomeComponent implements OnInit {
 
   //   }
   // }
+
+
+
+
+
+
 }
