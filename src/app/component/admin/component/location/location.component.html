@@ -23,13 +23,8 @@
                   <div class="row g-4 mb-3">
                     <div class="col-sm-auto">
                       <div>
-                        <button
-                          type="button"
-                          class="btn btn-success add-btn"
-                          data-bs-toggle="modal"
-                          id="create-btn"
-                          data-bs-target="#showModal"
-                        >
+                        <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn"
+                          data-bs-target="#showModal">
                           <i class="ri-add-line align-bottom me-1"></i>
                           Ajouter une location
                         </button>
@@ -38,11 +33,7 @@
                     <div class="col-sm">
                       <div class="d-flex justify-content-sm-end">
                         <div class="search-box ms-2">
-                          <input
-                            type="text"
-                            class="form-control search"
-                            placeholder="Search..."
-                          />
+                          <input type="text" class="form-control search" placeholder="Search..." />
                           <i class="ri-search-line search-icon"></i>
                         </div>
                       </div>
@@ -50,10 +41,7 @@
                   </div>
 
                   <div class="table-responsive table-card mt-3 mb-1">
-                    <table
-                      class="table align-middle table-nowrap"
-                      id="customerTable"
-                    >
+                    <table class="table align-middle table-nowrap" id="customerTable">
                       <thead class="table-light">
                         <tr>
                           <th class="sort" data-sort="ID">ID</th>
@@ -71,10 +59,7 @@
                           <th class="sort" data-sort="action">Action</th>
                         </tr>
                       </thead>
-                      <tbody
-                        *ngFor="let item of location"
-                        class="list form-check-all"
-                      >
+                      <tbody *ngFor="let item of location" class="list form-check-all">
                         <tr>
                           <td class="customer_name">L-{{ item.id }}</td>
                           <td class="customer_name">
@@ -95,12 +80,8 @@
                           <td>
                             <div class="d-flex gap-2">
                               <div class="remove">
-                                <button
-                                (click)="deleting(item.id)"
-                                  class="btn btn-sm btn-danger remove-item-btn"
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#deleteRecordModal"
-                                >
+                                <button (click)="deleting(item.id)" class="btn btn-sm btn-danger remove-item-btn"
+                                  data-bs-toggle="modal" data-bs-target="#deleteRecordModal">
                                   Retirer
                                 </button>
                               </div>
@@ -141,86 +122,47 @@
         </div>
         <!-- end row -->
 
-        <div
-          class="modal fade"
-          id="showModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
+        <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header bg-light p-3">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  id="close-modal"
-                ></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                  id="close-modal"></button>
               </div>
               <form #addForm="ngForm">
                 <div class="modal-body modalbody">
                   <div class="mb-3" id="modal-id" style="display: none;">
                     <label for="id-field" class="form-label">ID</label>
-                    <input
-                      type="text"
-                      id="id-field"
-                      class="form-control"
-                      placeholder="ID"
-                      readonly
-                    />
+                    <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
                   </div>
 
                   <div class="mb-3">
                     <label class="form-label mb-1">Début de location</label>
-                    <input
-                      type="date"
-                      name="start"
-                      [(ngModel)]="locationData.start"
-                      class="form-control"
-                      (change)="changeDate()"
-                    />
+                    <input type="date" name="start" [(ngModel)]="locationData.start" class="form-control"
+                      (change)="changeDate()" />
                   </div>
 
                   <div class="mb-3">
                     <label class="form-label mb-1">Fin de location</label>
-                    <input
-                      type="date"
-                      name="end"
-                      [(ngModel)]="locationData.end"
-                      class="form-control"
-                      (change)="changeDate()"
-                    />
+                    <input type="date" name="end" [(ngModel)]="locationData.end" class="form-control"
+                      (change)="changeDate()" />
                   </div>
 
                   <div class="mb-3">
                     <label for="customername-field" class="form-label" required>
                       Nombre de personne
                     </label>
-                    <input
-                      type="number"
-                      name="person"
-                      [(ngModel)]="locationData.person"
-                      id="customername-field"
-                      class="form-control"
-                      required
-                    />
+                    <input type="number" name="person" [(ngModel)]="locationData.person" id="customername-field"
+                      class="form-control" required />
                   </div>
 
                   <div>
                     <label for="status-field" class="form-label">
                       Choisissez la voiture
                     </label>
-                    <select
-                      class="form-control"
-                      name="car_id"
-                      [(ngModel)]="locationData.car_id"
-                      data-trigger
-                      name="status-field"
-                      id="status-field"
-                    >
+                    <select class="form-control" name="car_id" [(ngModel)]="locationData.car_id" data-trigger
+                      name="status-field" id="status-field">
                       <option *ngFor="let item of cars" value="{{ item.id }}">
                         {{ item.im }}-{{ item.marque }}[{{ item.place }} pls]
                       </option>
@@ -232,13 +174,8 @@
                       Vous êtes un client ?
                     </label>
                     <div class="form-check">
-                      <input
-                        [(ngModel)]="locationData.exist"
-                        type="checkbox"
-                        name="exist"
-                        id="exist-field"
-                        class="form-check-input"
-                      />
+                      <input [(ngModel)]="locationData.exist" type="checkbox" name="exist" id="exist-field"
+                        class="form-check-input" />
                       <label for="person-field" class="form-check-label">
                         Cochez ici si oui
                       </label>
@@ -248,14 +185,8 @@
                     <label for="status-field" class="form-label">
                       Selectionner votre nom
                     </label>
-                    <select
-                      class="form-control"
-                      name="car_id"
-                      [(ngModel)]="locationData.client_id"
-                      data-trigger
-                      name="status-field"
-                      id="status-field"
-                    >
+                    <select class="form-control" name="car_id" [(ngModel)]="locationData.client_id" data-trigger
+                      name="status-field" id="status-field">
                       <option *ngFor="let item of clients" value="{{ item.id }}">
                         {{item.name}}(+261 {{setPhoneNumber(item.number.slice(-9))}})
                       </option>
@@ -264,48 +195,27 @@
 
 
 
-                    <div *ngIf="!locationData.exist" class="mb-3">
-                      <label for="date-field" class="form-label">
-                        Nom du Client
-                      </label>
-                      <input
-                        type="text"
-                        id="date-field"
-                        name="name"
-                        [(ngModel)]="locationData.name"
-                        class="form-control"
-                        placeholder="ex: Onimalala, ..."
-                        required
-                      />
-                    </div>
+                  <div *ngIf="!locationData.exist" class="mb-3">
+                    <label for="date-field" class="form-label">
+                      Nom du Client
+                    </label>
+                    <input type="text" id="date-field" name="name" [(ngModel)]="locationData.name" class="form-control"
+                      placeholder="ex: Onimalala, ..." required />
+                  </div>
 
-                    <div *ngIf="!locationData.exist" class="mb-3">
-                      <label for="date-field" class="form-label">Adresse</label>
-                      <input
-                        type="text"
-                        id="date-field"
-                        name="adress"
-                        [(ngModel)]="locationData.adresse"
-                        class="form-control"
-                        placeholder="ex: Tanambao ..."
-                        required
-                      />
-                    </div>
+                  <div *ngIf="!locationData.exist" class="mb-3">
+                    <label for="date-field" class="form-label">Adresse</label>
+                    <input type="text" id="date-field" name="adress" [(ngModel)]="locationData.adresse"
+                      class="form-control" placeholder="ex: Tanambao ..." required />
+                  </div>
 
-                    <div  *ngIf="!locationData.exist" class="mb-3">
-                      <label for="date-field" class="form-label">
-                        Numéro téléphone
-                      </label>
-                      <input
-                        type="text"
-                        id="date-field"
-                        name="number"
-                        [(ngModel)]="locationData.number"
-                        class="form-control"
-                        placeholder="033, 33, 261, ..."
-                        required
-                      />
-                    </div>
+                  <div *ngIf="!locationData.exist" class="mb-3">
+                    <label for="date-field" class="form-label">
+                      Numéro téléphone
+                    </label>
+                    <input type="text" id="date-field" name="number" [(ngModel)]="locationData.number"
+                      class="form-control" placeholder="033, 33, 261, ..." required />
+                  </div>
 
 
                   <!-- <div>
@@ -324,20 +234,11 @@
 
                 <div class="modal-footer">
                   <div class="hstack gap-2 justify-content-end">
-                    <button
-                      type="button"
-                      class="btn btn-light"
-                      data-bs-dismiss="modal"
-                    >
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">
                       Close
                     </button>
-                    <button
-                      type="submit"
-                      class="btn btn-success"
-                      data-bs-dismiss="modal"
-                      id="add-btn"
-                      (click)="addLocation()"
-                    >
+                    <button type="submit" class="btn btn-success" data-bs-dismiss="modal" id="add-btn"
+                      (click)="addLocation()">
                       Save
                     </button>
                   </div>
@@ -348,49 +249,31 @@
         </div>
 
         <!-- Modal -->
-        <div
-          class="modal fade zoomIn"
-          id="deleteRecordModal"
-          tabindex="-1"
-          aria-hidden="true"
-        >
+        <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  id="btn-close"
-                ></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                  id="btn-close"></button>
               </div>
               <div class="modal-body">
                 <div class="mt-2 text-center">
                   <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
                     <h4>Êtes-vous sûre ?</h4>
                     <p class="text-muted mx-4 mb-0">
-                      Vous voulez vraiment supprimer la location de {{locationToDelete.clientName}} (+261 {{setPhoneNumber(locationToDelete.clientNumber.slice(-9))}})
-                       pour {{locationToDelete.carIm}}?
+                      Vous voulez vraiment supprimer la location de {{locationToDelete.clientName}} (+261
+                      {{setPhoneNumber(locationToDelete.clientNumber.slice(-9))}})
+                      pour {{locationToDelete.carIm}}?
                       Location du {{locationToDelete.startDate}} au {{locationToDelete.endDate}}
                     </p>
                   </div>
                 </div>
                 <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                  <button
-                    type="button"
-                    class="btn w-sm btn-light"
-                    data-bs-dismiss="modal"
-                  >
+                  <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">
                     Fermer
                   </button>
-                  <button
-                    type="button"
-                    class="btn w-sm btn-danger"
-                    id="delete-record"
-                    data-bs-dismiss="modal"
-                    (click)="deleteLocation(locationToDelete.idToDelete)"
-                  >
+                  <button type="button" class="btn w-sm btn-danger" id="delete-record" data-bs-dismiss="modal"
+                    (click)="deleteLocation(locationToDelete.idToDelete)">
                     J'en suis sûr
                   </button>
                 </div>

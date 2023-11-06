@@ -1,36 +1,71 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CarsAll } from 'src/app/model/cars/cars';
+import { Cathegorie } from 'src/app/model/cathegorie/cathegorie';
 import { CarsService } from 'src/app/service/cars/cars.service';
+import { CathegorieService } from 'src/app/service/categotie/cathegorie.service';
 import { HomeService } from 'src/app/service/home/home.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   dateSend = {
     start: '',
-    end: ''
-  }
-  constructor(private carsService:CarsService, private homeService: HomeService ,private route: Router){}
-  
+    end: '',
+  };
+
+  cars: CarsAll[] = [];
+  cathegorie: Cathegorie[] = [];
+  disable: boolean = false;
+
+  constructor(
+    private carsService: CarsService,
+    private homeService: HomeService,
+    private cathegorieService: CathegorieService,
+    private route: Router
+  ) {}
+
   ngOnInit(): void {
     this.getCarAll();
+    this.getAllCathogorie();
     // this.algo();
   }
 
-  public getCarAll(){
-    this.carsService.getAllCars().subscribe((data)=>{
-    })
-  }
-  redirectToCars(){
-    this.route.navigate(['/cars'])
+  public getCarAll() {
+    this.carsService.getAllCars().subscribe((data) => {
+      this.cars = data;
+      console.log('==============this cars======================');
+      console.log(this.cars);
+      console.log('====================================');
+    });
   }
 
-  public search(){
+  public getAllCathogorie() {
+    this.cathegorieService.getCathegorie().subscribe((data) => {
+      this.cathegorie = data;
+
+      console.log(this.cathegorie);
+    });
+  }
+
+  validation() {
+    if (this.dateSend.end > this.dateSend.start) {
+      this.disable = true;
+      this.route.navigate(['/cars']);
+    } else {
+      this.disable = false;
+    }
+  }
+  redirectToCars() {
+    this.route.navigate(['/cars']);
+  }
+
+  public search() {
     this.homeService.setDates(this.dateSend);
-    this.route.navigate(['/cars'])
+    this.route.navigate(['/cars']);
   }
 
   // algo(){
@@ -45,16 +80,9 @@ export class HomeComponent implements OnInit{
   //           boll = false;
   //       }
   //     }
-  //     console.log(tableau);      
+  //     console.log(tableau);
   //     console.log(boll);
-
 
   //   }
   // }
-  
-  
-  
-  
- 
-
 }
